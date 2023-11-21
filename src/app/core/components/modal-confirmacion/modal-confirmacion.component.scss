@@ -1,0 +1,66 @@
+:host {
+  display: block;
+  padding: 20px;
+
+  h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+  }
+
+  p {
+    margin-top: 10px;
+    color: #555;
+  }
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 10px;
+
+
+  @media (min-width: 600px) {
+    flex-wrap: inherit;
+    flex-direction: row;
+    margin-top: 0px;
+
+  }
+
+  button {
+    min-width: 90px;
+    font-size: 11px;
+    width: 70%;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 0px;
+
+    @media (min-width: 600px) {
+        width: 50%;
+        margin-left: 10px;
+      }
+  }
+
+ 
+
+  button:first-child {
+    margin-left: 0;
+  }
+
+  button[color="primary"] {
+    background-color: #673ab7;
+    color: #fff;
+  }
+
+  button[color="warn"] {
+    background-color: #dc3545;
+    color: #fff;
+  }
+
+  button[color="primary"]:hover,
+  button[color="warn"]:hover {
+    opacity: 0.8;
+  }
+}

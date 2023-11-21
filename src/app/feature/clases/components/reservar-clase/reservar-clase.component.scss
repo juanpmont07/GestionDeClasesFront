@@ -1,0 +1,138 @@
+// component.scss
+
+.reserva {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 900px) {
+    flex-direction: row;
+  }
+
+  &__principal {
+    display: flex;
+    flex-direction: column;
+
+
+
+    &__contenedor {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      @media (min-width: 900px) {
+        justify-content: space-between;
+
+      }
+
+
+      &__informacion {
+        margin: 22px;
+        display: none;
+
+        @media (min-width: 900px) {
+          display: block;  
+        }
+
+        &-nombre{
+          font-weight: bold;
+          color: rgba(0,0,0,.87);
+        }
+      }
+      
+    }
+
+    &__paginador{
+      display: flex;
+      justify-content: center;
+    }
+
+    &__lista {
+      display: grid;
+      gap: 50px;
+      grid-template-columns: repeat(1, 1fr);
+      padding: 20px;
+
+      @media (min-width: 600px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (min-width: 1000px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      &__paginador{
+        display: flex;
+      }
+   
+    }
+
+
+    .titulo-clases-disponibles{
+        margin-left: 22px;
+    }
+  }
+  &__resumen {
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 4px;
+
+    @media (min-width: 900px) {
+      width: 360px;
+    }
+
+    .mat-raised-button {
+      width: 100%;
+    }
+
+    &__card {
+       margin: 10px;
+
+      &__contenido {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-izquierda {
+          flex: 1;
+
+          h3 {
+            margin-bottom: 4px;
+          }
+
+          div {
+            margin-bottom: 2px;
+          }
+        }
+
+        &__derecha {
+          padding: 4px;
+          display: flex;
+          align-items: center;
+          margin-left: auto;
+          cursor: pointer;
+
+          .mat-icon{
+            color: red;
+          }
+        }
+      }
+    }
+
+    .saldo-info{
+      font-size: 18px;
+      margin: 10px;
+    }
+  }
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Opacidad del fondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

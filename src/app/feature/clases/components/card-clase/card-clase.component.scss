@@ -1,0 +1,48 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    cursor: pointer;
+
+     .mat-card-header {
+      display: flex;
+      align-items: center;
+
+      .profesor-avatar {
+        color: gray;
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+      }
+
+      .mat-card-title{
+        font-size: 15px;
+
+      }
+    }
+
+    &__contenido {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &-izquierda {
+        flex: 1;
+
+        div {
+          margin-bottom: 2px;
+        }
+      }
+
+      &-derecha {
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+      }
+    }
+
+    .mat-checkbox {
+      margin-left: auto;
+    }
+  }

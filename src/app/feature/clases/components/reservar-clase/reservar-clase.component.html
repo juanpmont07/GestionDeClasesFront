@@ -1,0 +1,66 @@
+<div class="reserva">
+  <div class="reserva__principal">
+    <div class="reserva__principal__contenedor">
+      <app-filtro
+        (tipoClaseCambio)="aplicarFiltroTipoClase($event)"
+        (limpiar)="limpiarFiltro()"
+        (actualizarFecha)="actualizarFecha($event)"
+      ></app-filtro>
+
+      <mat-card class="reserva__principal__contenedor__informacion">
+        <div class="reserva__principal__contenedor__informacion-nombre">
+          {{ estudianteSeleccionado.nombre }}
+        </div>
+        <div>Nivel de Inglés: {{ estudianteSeleccionado.nivelDeIngles }}</div>
+        <div>Saldo: {{ estudianteSeleccionado.saldo | currency }}</div>
+      </mat-card>
+    </div>
+
+    <h2 class="titulo-clases-disponibles">Clases disponibles</h2>
+
+    <div>
+    <div class="reserva__principal__lista">
+      <div
+        *ngFor="let clase of obsClase | async "
+      >
+        <app-card-clase
+          (seleccionoClase)="toggleSeleccionClase($event)"
+          [clase]="clase"
+        ></app-card-clase>
+      </div>
+    </div>
+    <div class="reserva__principal__paginador">
+      <mat-paginator [pageSize]="6" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+  </div>
+  <div class="reserva__resumen">
+    <h2>Clases seleccionadas ({{ clasesSeleccionadas.length }})</h2>
+    <div *ngFor="let clase of clasesSeleccionadas.slice(0, 4)">
+      <mat-card class="reserva__resumen__card">
+        <mat-card-content class="reserva__resumen__card__contenido">
+          <div class="reserva__resumen__card__contenido-izquierda">
+            <div>Precio: {{ clase.precio | currency }}</div>
+            <div>
+              {{ clase.fechaInicio | date : "dd/MM/yyyy HH:mm" }}
+            </div>
+          </div>
+
+          <div class="reserva__resumen__card__contenido__derecha">
+            <mat-icon title="Eliminar" (click)="toggleSeleccionClase(clase)"
+              >restore_from_trash</mat-icon
+            >
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="saldo-info">
+      <span>Total: {{ saldoTotal | currency }}</span>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="reservar()">
+      Reservar
+    </button>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<h2 class="titulo-clases-reservadas">Clases reservadas</h2>
+
+<app-filtro
+(tipoClaseCambio)="aplicarFiltroTipoClase($event)"
+(limpiar)="limpiarFiltro()"
+(actualizarFecha)="actualizarFecha($event)"
+></app-filtro>
+<div class="contenedor-reservadas">
+    <div *ngFor="let clase of obsClase | async">
+        <mat-card class="contenedor-reservadas_card">
+            <mat-card-header>
+                <mat-icon class="profesor-avatar">person</mat-icon>
+                <mat-card-title>{{ clase.nombreProfesor }}</mat-card-title>
+                <mat-card-subtitle>Fecha: {{clase.fechaInicio}}</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content class="contenedor-reservadas__card__contenido">
+                <div class="contenedor-reservadas__card__contenido-izquierda">
+                    <div>Tipo clase: {{ clase.tipoClase }}</div>
+                </div>
+
+                <div class="contenedor-reservadas__card__contenido-derecha" >
+                    <button mat-raised-button (click)="abrirModalConfirmacion(clase)" class="contenedor-reservadas__card__contenido-derecha-red"  color="red">
+                        Cancelar
+                    </button>
+               </div>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+</div>
+<div class="contenedor-reservadas-paginador">
+    <mat-paginator [pageSize]="6" showFirstLastButtons></mat-paginator>
+</div>

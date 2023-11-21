@@ -1,0 +1,25 @@
+<mat-card *ngIf="clase" class="card" (click)="toggleSeleccionClase()">
+    <mat-card-header>
+      <mat-icon class="profesor-avatar">person</mat-icon>
+      <mat-card-title>{{ clase.nombreProfesor }}</mat-card-title>
+      <mat-card-subtitle
+        >Ocupacion actual: {{ clase.ocupacionActual }}</mat-card-subtitle
+      >
+    </mat-card-header>
+
+    <mat-card-content class="reserva__principal__lista__card__contenido">
+      <div class="reserva__principal__lista__card__contenido-izquierda">
+        <div>Precio: {{ clase.precio | currency }}</div>
+        <div>Tipo clase: {{ clase.tipoClase }}</div>
+        <div>
+          Fecha: {{ clase.fechaInicio | date : "dd/MM/yyyy HH:mm" }}
+        </div>
+      </div>
+   
+      <div class="reserva__principal__lista__card__contenido-derecha">
+        <mat-checkbox disabled
+        [checked]="clase.seleccionada" disabled
+        ></mat-checkbox>
+      </div>
+    </mat-card-content>
+  </mat-card>

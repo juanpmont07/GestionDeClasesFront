@@ -1,0 +1,50 @@
+<div class="contenedor__filtros">
+    <div class="contenedor__filtros__filtro">
+      <span class="contenedor__filtros__filtro__label"
+        >Filtrar por fecha:</span
+      >
+      <mat-form-field
+        class="contenedor__filtros__filtro__field"
+        appearance="fill"
+      >
+        <mat-label>Elige una fecha</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [(ngModel)]="fechaFiltro"
+          (dateChange)="lafechaCambio($event.value)"
+          [min]="fechaMinima()"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="contenedor__filtros__seleccionador">
+      <span class="contenedor__filtros__seleccionador__label"
+        >Filtrar por tipo clase:</span
+      >
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo de Clase</mat-label>
+        <mat-select
+          [(value)]="tipoClaseFiltro"
+          (selectionChange)="aplicarFiltroTipoClase($event.value)"
+        >
+          <mat-option *ngFor="let tipo of tiposClase" [value]="tipo">
+            {{ tipo }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div
+      class="contenedor__filtros__container-icon"
+      (click)="limpiarFiltro()"
+    >
+      <span>Limpiar filtros</span>
+      <mat-icon class="contenedor__filtros__container-icon-filtro"
+        >filter_alt_off</mat-icon
+      >
+    </div>
+  </div>
